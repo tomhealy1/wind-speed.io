@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
+  <img src="https://tomhealy1.github.io/images/headerimages/logo1.PNG"  align ="left" height="200">
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+</head>
+<style>
+  body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:white;
+      background-color: black;
+      margin:0;
+    }
+  .header{
+        padding: 40px;
+        text-align: center;
+        background:black;
+        color: white;
+      }
+  .footer{
+  /*Declare the styling for the footer class*/
+  padding: 40px;
+  text-align: center;
+  margin:0;
+  background:#000000;
+  color: white;
+}
+
+.button{
+  background-color: #000000;
+border: none;
+color: white;
+width:120px;
+height:60px;
+margin:2px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+align-self: center;
+}
+
+.button:hover{
+color: #000000;
+border: 1.5rem solid;
+background-color: white;
+text-decoration: underline;
+border: solid;
+margin:2px;
+
+}
+
+
+#button {
+background-color: #000000;
+border: none;
+color: white;
+width:120px;
+height:60px;
+margin:2px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 14px;
+align-self: center;
+}
+/*Declare hover styling for the button*/
+#button:hover{
+color: #000000;
+border: 1.5rem solid;
+background-color: white;
+text-decoration: underline;
+border: solid;
+margin:2px;
+
+}
+
+    </style>
+
+<body>
+ <div id="form">
+	<h1>Prediction of power from speed</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form name="powerform" action="{{ url_for('predict') }}"method="post">
+    	<input type="number"      min="2" max="100" name="wind" placeholder="Input speed here" required="required" />
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+
+ </div>
+   {{ prediction_text }}
+
+</body>
+
+</html>
