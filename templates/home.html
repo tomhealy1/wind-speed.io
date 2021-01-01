@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html >
+<html>
 <head>
   <meta charset="UTF-8">
   <title>ML API</title>
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
-  <img src="https://tomhealy1.github.io/images/headerimages/logo1.PNG"  align ="left" height="100">
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <a href="https://tomhealy1.github.io/">
+    <img src="https://tomhealy1.github.io/images/headerimages/logo1.PNG"  alt="logo" align ="left" height="100"></a>
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
@@ -57,6 +58,19 @@ margin:2px;
 
 }
 
+.textDiv {
+  width: 800px;
+}
+
+.inputForm{
+  padding:20px;
+}
+
+#mainTitle {
+  margin:auto;
+  text-align: center;
+}
+
 
 #button {
 background-color: #000000;
@@ -85,29 +99,46 @@ margin:2px;
     </style>
 
 <body>
- <div id="form">
-	<h1>Prediction of power from speed</h1>
+  <h1 class="header">Prediction of power from speed</h1>
+  <br></br>
+ 
+  
+  <div class="inputForm">	
+    <h2>Model - Linear Regression</h2>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form name="powerform" action="{{ url_for('predict') }}"method="post">
-    	<input type="number" style="width: 10em" min="2.83" max="100" step="0.01" value="2.83" name="wind" placeholder="Input speed here" required="required" />
+    	<input type="number" style="width: 10em" min="0.00" max="100" step="0.01" value="0.00" name="wind" placeholder="Input speed here" required="required" />
 
         <button type="submit" class="button">Predict</button>
     </form>
-
-   <br>
-   <br>
-
  </div>
+ <div class=inputForm>
    {{ prediction_text }}
+  </div>
+   
+   <div class="inputForm">	
+    <h2>Model - Random Forest</h2>
+ 
+      <!-- Main Input For Receiving Query to our ML -->
+     <form name="powerform1" action="{{ url_for('predictrf') }}"method="post">
+       <input type="number" style="width: 10em" min="0.00" max="100" step="0.01" value="0.00" name="wind" placeholder="Input speed here" required="required" />
+         <button type="submit" class="button">Predict</button>
+     </form>
+    <br>
+  </div>
+  <div class=inputForm>
+    {{ prediction_textrf }}
+  </div>
 
- <div>
+    <br>
+ <div class="textDiv">
   <h2>Background</h2> 
   <p>The original dataset had a set of 500 observations. While doing EDA (Exploratory Data Analysis), we found that some wind values 
-    were generating zero power. We figured that these observations were due to maintenance or fault and so we dropped them. 
-    
-    Doing some into wind power generation, we found that there is a cut off for power generation in wind turbine where wind speeds can be too high 
-    and can damage the motor, hub and blades and so the upper limit of wind speed exist. We have chosen 100 and a top speed.  </p>
+    were generating zero power. We figured that these observations were due to maintenance or fault and so we dropped them as outlier that may taint the generalisation ability of our model.
+    In doing research into wind power generation, we found that there is a cut off for power generation in wind turbines where wind speeds can be too high 
+    and can damage the motor, hub and blades and so the upper limit of wind speed exist. The two model we have chosen are Linear Regression and Random Forest. Both models predict reasonably 
+    the power generated from a mean wind value however the random forest model has higher predictive power when dealing with lower and high value making it better generalized model.     </p>
  </div>
 
 </body>
