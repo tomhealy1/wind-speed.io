@@ -35,6 +35,9 @@
   color: white;
 }
 
+.h2 {
+  display:inline-block;
+}
 .button{
   background-color: #000000;
 border: none;
@@ -60,13 +63,17 @@ margin:2px;
 }
 
 .textDiv {
-  width: 800px;
+  width: 1200px;
   padding:20px;
 }
 
 .inputForm{
-  padding:20px;
+  display: inline-block;
+  padding:70px;
+  
 }
+
+
 
 #mainTitle {
   margin:auto;
@@ -104,9 +111,9 @@ margin:2px;
   <h1 class="header">Prediction of power from speed</h1>
   <br></br>
  
-  
-  <div class="inputForm">	
-    <h2>Model - Linear Regression</h2>
+
+  <div class="inputForm" style=float:left;>	
+    <h2 class="h2">Model - Linear Regression</h2>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form name="powerform" action="{{ url_for('predict') }}"method="post">
@@ -115,26 +122,26 @@ margin:2px;
         <button type="submit" class="button">Predict</button>
     </form>
  </div>
- <div class=inputForm>
+ <div  class=inputForm>
    {{ prediction_text }}
   </div>
    
-   <div class="inputForm">	
-    <h2>Model - Random Forest</h2>
+   <div class="inputForm" style=float:right;>	
+    <h2 class="h2">Model - Random Forest</h2>
  
       <!-- Main Input For Receiving Query to our ML -->
      <form name="powerform1" action="{{ url_for('predictrf') }}"method="post">
        <input type="number" style="width: 10em" min="0.00" max="100" step="0.01" value="0.00" name="wind" placeholder="Input speed here" required="required" />
          <button type="submit" class="button">Predict</button>
      </form>
-    <br>
-  </div>
+   </div>
   <div class=inputForm>
     {{ prediction_textrf }}
   </div>
 
     <br>
- <div class="textDiv">
+  <section>
+  <div class="textDiv" style="float: left;">
   <h2>Background</h2> 
   <p>The original dataset had a set of 500 observations. While doing EDA (Exploratory Data Analysis), we found that some wind values 
     were generating zero power. We figured that these observations were due to maintenance or fault and so we dropped them as outlier that may taint the generalisation ability of our model.
@@ -142,6 +149,7 @@ margin:2px;
     and can damage the motor, hub and blades and so the upper limit of wind speed exist. The two models we have chosen are Linear Regression (excluding outliers) and Random Forest. Both models predict reasonably well
     the power generated from a given wind value however the random forest model has higher predictive power when dealing with lower and high values making it better generalized model.     </p>
  </div>
+</section>
 
 </body>
 

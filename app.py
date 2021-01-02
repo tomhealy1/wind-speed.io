@@ -19,7 +19,7 @@ def predict():
 
     output = round(prediction[0], 2)
 
-    return render_template('home.html', prediction_text="The predicted power output is {} KWh".format(output))
+    return render_template('home.html', prediction_text="The predicted power output using Linear Regression is {} KWh".format(output))
 
 @app.route('/predictrf',methods=['POST'])
 def predictrf():
@@ -29,7 +29,7 @@ def predictrf():
 
     output1 = round(prediction1[0], 2)
 
-    return render_template('home.html', prediction_textrf="The predicted power output is {} KWh".format(output1))
+    return render_template('home.html', prediction_textrf="The predicted power output using Random Forest is {} KWh".format(output1))
 
 
 if __name__ == "__main__":
