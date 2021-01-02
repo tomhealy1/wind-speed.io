@@ -6,7 +6,7 @@
   <title>ML API</title>
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js"></script>
   <a href="https://tomhealy1.github.io/">
-    <img src="https://tomhealy1.github.io/images/headerimages/logo1.PNG"  alt="logo" align ="left" height="100"></a>
+    <img src="https://tomhealy1.github.io/images/headerimages/logo1.PNG" style=padding:10px; alt="logo" align ="left" height="100"></a>
 <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
@@ -21,7 +21,7 @@
       margin:0;
     }
   .header{
-        padding: 40px;
+        padding:20px;
         text-align: center;
         background:black;
         color: white;
@@ -69,10 +69,16 @@ margin:2px;
 
 .inputForm{
   display: inline-block;
-  padding:70px;
+  padding:40px;
   
 }
 
+.predictionText{
+  display: inline-block;
+  padding:40px;
+  text-align: center;
+  
+}
 
 
 #mainTitle {
@@ -122,7 +128,7 @@ margin:2px;
         <button type="submit" class="button">Predict</button>
     </form>
  </div>
- <div  class=inputForm>
+ <div  class="predictionText">
    {{ prediction_text }}
   </div>
    
@@ -135,7 +141,7 @@ margin:2px;
          <button type="submit" class="button">Predict</button>
      </form>
    </div>
-  <div class=inputForm>
+  <div class="predictionText">
     {{ prediction_textrf }}
   </div>
 
